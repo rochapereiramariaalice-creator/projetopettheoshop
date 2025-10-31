@@ -1,11 +1,10 @@
 #THÉOPETSHOP 
 
-adm = []
-cliente = []
+usuarios = [['alice','alice@gmail.com', '12345678', 'A']]
 
 while True:
     print('\nBem vindo ao Théopetshop\n')
-    print('MENU INICIAL:\n')
+    print('INÍCIO:\n')
     print('1 - Cadastro')
     print('2 - Login') 
     print('3 - Sair\n')
@@ -13,7 +12,12 @@ while True:
     if(opcao == '3'):
         break
     elif(opcao == '1'):
+            print('\nCADASTRAMENTO:\n') 
             tipo = input('Digite A para administrador ou C para cliente: ')
+            while tipo not in ['A', 'C']:
+                 print('Tipo inválido')
+                 tipo = input('Digite A para administrador ou C para cliente: ') 
+
             if tipo == 'C':                
                  nome = input('\nDigite o nome do tutor(ra): ')
                  while len(nome) < 3:
@@ -51,42 +55,111 @@ while True:
                       senha = input('Crie uma senha: ')
 
             if tipo in ['A']:
-                 adm.append([nome, email, senha, tipo])
+                 usuarios.append([nome, email, senha, tipo])
                  print('\nCadastrado como administrador!') 
                  print('Agora faça seu login abaixo\n')
 
             elif tipo in ['C']:
-                 cliente.append([nome_pet, nome, email, senha, tipo]) 
-                 print('\nCadastrado como cliente!')
+                 usuarios.append([nome, email, senha, tipo]) 
+                 print('\nCadastrado como cliente!\n')
                  print('Agora faça seu login abaixo\n') 
                                 
     elif (opcao == '2'):
-            print('\nLOGIN:\n')
-            tipo = input('Você é administrador(A) ou cliente(C)? ')
+          print('\nLOGIN:')
+          logando = True
+          while logando:
+            email = input('\nDigite seu email: ')
+            senha = input('Digite sua senha: ')
+            tipo = 'N'
+          
+            for a in usuarios:
+                    if a[1] == email and a[2] == senha:
+                         print(f'\nBem vindo(a) {a[0]} perfil adm!\n') 
+                         tipo = a[3]
+                         logando = False
+            if logando == False and tipo == 'A':
+                produtos = [
+                    ['Ração de 1kg',16, 10],
+                    ['Petisco de 300g',12, 10],
+                    ['Cama',70, 10],
+                    ['Shampoo',30, 10] 
+                ]                    
+                serviços = [
+                    ['Banho',35, [8,10]],
+                    ['Banho e tosa',38, [8,10]],
+                    ['Tosa higiênica',42, [14,15]],
+                    ['Tosa completa',50, [14,15]] 
+                ] 
+                while True:
+                    print('\nMENU DO ADMINISTRADOR: ')
+                    print('1 - Cadastrar produtos')
+                    print('2 - Cadastrar serviços')
+                    print('3 - Voltar ao menu inícial')
+                    opcao1 = input('Digite a sua opção: ')
 
-            if tipo in ['A']:
-                 email = input('\nDigite seu email: ')
-                 senha = input('Digite sua senha: ')
+                    if opcao1 == '1':
+                         print('\nMENU PRODUTO: ')
+                         print('\n1 - Cadastrar')
+                         print('2 - Atualizar')
+                         print('3 - Remover')
+                         print('4 - Voltar')
+                         opcao2 = input('\nDigite sua opção: ') 
 
-                 for a in adm:
-                      if a[1] == email and a[2] == senha:
-                           print(f'\nBem vindo(a) {a[0]} como administrador(ra)!\n')
+                         if opcao2 == '1':
+                              nomep = input('Digite o nome do produto: ')
+                              quantidadep = input('Digite quantas unidades: ')
+                              valorp = int(input('Digite o valor do produto: '))
+                              produtos.append([nomep, quantidadep, valorp]) 
+                                   
+                         elif opcao2 == '2':
+                              for n in range(len(produtos)):
+                                   print(f'Produto: {produtos[n][0]} | Quantidade: {produtos[n][1]} | Valor: {produtos[n][2]}') 
+                              alterar = input('O que deseja mudar? ')
+                              for n in produtos:
+                                   if alterar == produtos[n][0]:
+                                        nomep = input('Digite o nome do produto: ')
+                                        produtos[n][0] = nomep
+                                   elif alterar == produtos[n][1]:
+                                        quantidadep = input('Digite a quantidade: ')
+                                        produtos[n][1] = quantidadep
+                                   elif alterar == produtos[n][2]:
+                                        valorp = input('Digite o valor do produto: ')
+                                        produtos[n][2] = valorp
+                         
+                         elif opcao2 == '3':
+                              for i in range(len(produtos)):
+                                   print(f'Produto: {produtos[n][0]} | Quantidade: {produtos[n][1]} | Valor: {produtos[n][2]}') 
+                              remover = input('Digite qual deseja remover: ')
+                              produtos.remove(produtos[i])
+
+                              for i in range(len(produtos)):
+                                   print(f'Produto: {produtos[n][0]} | Quantidade: {produtos[n][1]} | Valor: {produtos[n][2]}')  
+
+                         elif opcao2 == '4':
+                              break
+
+            elif logando == False and tipo == 'C':
+                 print(f'\nBem vindo(a) {a[0]}!\n')
+                 while True:
+                      print('\nMENU SERVIÇOS')
+                      print('1 - Comprar produtos') 
+                      print('2 - Agendar serviços')
+                      print('3 - Avaliação de seviços')
+                      print('4 - Voltar')
+                      opcao3 = input('Digite a sua opção: ')
+
+                      if opcao3 == '4':
                            break
-                      else:
-                           print('\nDados incorretos, refaça o login\n')
+                    #   if opcao3 == 1:
 
-            elif tipo in ['C']:
-                 nome_pet = input('\nDigite o nome de seu pet: ')
-                 email = input('Digite seu email: ')
-                 senha = input('Digite sua senha: ')
 
-                 for c in cliente:
-                      if c[0] == nome_pet and c[2] == email and c[3] == senha:
-                           print(f'\nBem vindo(a) {c[1]} tutor(ra) de {c[0]}!\n') 
-                           break
-                      else:
-                           print('\nDados incorretos, refaça o login\n')
 
-            while tipo not in ['A', 'C']:
-                 print('Tipo inválido')
-                 tipo = input('Você é administrador(A) ou cliente(C)? ') 
+
+
+
+
+
+                    
+                 break
+            else:
+                         print('\nDados incorretos, refaça o login\n')
