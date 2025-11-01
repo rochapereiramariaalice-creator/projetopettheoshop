@@ -4,7 +4,7 @@ usuarios = [['alice','alice@gmail.com', '12345678', 'A']]
 
 while True:
     print('\nBem vindo ao Théopetshop\n')
-    print('INÍCIO:\n')
+    print('INÍCIO:\n') 
     print('1 - Cadastro')
     print('2 - Login') 
     print('3 - Sair\n')
@@ -79,10 +79,10 @@ while True:
                          logando = False
             if logando == False and tipo == 'A':
                 produtos = [
-                    ['Ração de 1kg',16, 10],
-                    ['Petisco de 300g',12, 10],
-                    ['Cama',70, 10],
-                    ['Shampoo',30, 10] 
+                    ['Ração de 1kg', '16', '15'],
+                    ['Petisco de 300g', '12', '40'], 
+                    ['Cama', '70', '10'],
+                    ['Shampoo', '30', '50'] 
                 ]                    
                 serviços = [
                     ['Banho',35, [8,10]],
@@ -92,9 +92,9 @@ while True:
                 ] 
                 while True:
                     print('\nMENU DO ADMINISTRADOR: ')
-                    print('1 - Cadastrar produtos')
+                    print('\n1 - Cadastrar produtos')
                     print('2 - Cadastrar serviços')
-                    print('3 - Voltar ao menu inícial')
+                    print('3 - Voltar ao menu inícial\n')
                     opcao1 = input('Digite a sua opção: ')
 
                     if opcao1 == '1':
@@ -106,34 +106,40 @@ while True:
                          opcao2 = input('\nDigite sua opção: ') 
 
                          if opcao2 == '1':
-                              nomep = input('Digite o nome do produto: ')
+                              nomep = input('\nDigite o nome do produto: ')
                               quantidadep = input('Digite quantas unidades: ')
                               valorp = int(input('Digite o valor do produto: '))
-                              produtos.append([nomep, quantidadep, valorp]) 
+                              produtos.append([nomep, valorp, quantidadep]) 
                                    
                          elif opcao2 == '2':
                               for n in range(len(produtos)):
-                                   print(f'Produto: {produtos[n][0]} | Quantidade: {produtos[n][1]} | Valor: {produtos[n][2]}') 
-                              alterar = input('O que deseja mudar? ')
-                              for n in produtos:
-                                   if alterar == produtos[n][0]:
-                                        nomep = input('Digite o nome do produto: ')
-                                        produtos[n][0] = nomep
-                                   elif alterar == produtos[n][1]:
-                                        quantidadep = input('Digite a quantidade: ')
-                                        produtos[n][1] = quantidadep
-                                   elif alterar == produtos[n][2]:
-                                        valorp = input('Digite o valor do produto: ')
-                                        produtos[n][2] = valorp
-                         
-                         elif opcao2 == '3':
-                              for i in range(len(produtos)):
-                                   print(f'Produto: {produtos[n][0]} | Quantidade: {produtos[n][1]} | Valor: {produtos[n][2]}') 
-                              remover = input('Digite qual deseja remover: ')
-                              produtos.remove(produtos[i])
+                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
+                              alterar = input('\nO que deseja mudar? ')
 
-                              for i in range(len(produtos)):
-                                   print(f'Produto: {produtos[n][0]} | Quantidade: {produtos[n][1]} | Valor: {produtos[n][2]}')  
+                              for n in range(len(produtos)):
+                                   if alterar == produtos[n][0]:
+                                        nomep = input('\nDigite o nome do produto: ') 
+                                        produtos[n][0] = nomep 
+
+                                   if alterar == produtos[n][1]:
+                                        valorp = float(int(input('Digite o valor do produto: ')))
+                                        produtos[n][1] = valorp
+
+                                   if alterar == produtos[n][2]:
+                                        quantidadep = int(input('Digite a quantidade do produto: '))
+                                        produtos[n][2] = quantidadep 
+          
+                              for n in range(len(produtos)):
+                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')                                            
+                              
+                         elif opcao2 == '3':
+                              for n in range(len(produtos)):
+                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
+                              remover = input('\nDigite qual deseja remover: ')
+                              produtos.remove(produtos[n])
+
+                              for n in range(len(produtos)):
+                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')  
 
                          elif opcao2 == '4':
                               break
