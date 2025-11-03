@@ -1,6 +1,18 @@
 #THÉOPETSHOP 
 
-usuarios = [['alice','alice@gmail.com', '12345678', 'C']]
+usuarios = [['alice','alice@gmail.com', '12345678', 'A']]
+produtos = [
+     ['Ração de 1kg', 16.0, 15],
+     ['Petisco de 300g', 12, 40], 
+     ['Cama', 70.0, 10],
+     ['Shampoo', 30.0, 50] 
+]                    
+servicos = [
+     ['Banho', 35.0, [8,10]],
+     ['Banho e tosa', 38.0, [8,10]],
+     ['Tosa higiênica', 42.0, [14,15]],
+     ['Tosa completa', 50.0, [14,15]] 
+] 
 
 while True:
     print('\nBem vindo ao Théopetshop\n')
@@ -74,22 +86,11 @@ while True:
           
                for a in usuarios:
                     if a[1] == email and a[2] == senha:
-                         print(f'\nBem vindo(a) {a[0]}!\n') 
                          tipo = a[3]
                          logando = False
                if logando == False and tipo == 'A':
-                    produtos = [
-                    ['Ração de 1kg', 16.0, 15],
-                    ['Petisco de 300g', 12, 40], 
-                    ['Cama', 70.0, 10],
-                    ['Shampoo', 30.0, 50] 
-                ]                    
-                    servicos = [
-                    ['Banho', 35.0, [8,10]],
-                    ['Banho e tosa', 38.0, [8,10]],
-                    ['Tosa higiênica', 42.0, [14,15]],
-                    ['Tosa completa', 50.0, [14,15]] 
-                ] 
+                    print(f'\nBem vindo(a) {a[0]}!\n')
+                   
                     while True:
                          print('\nMENU DO ADMINISTRADOR: ')
                          print('\n1 - Cadastrar produtos')
@@ -114,35 +115,33 @@ while True:
                                    produtos.append([nomep, valorp, quantidadep]) 
                                         
                               elif opcao2 == '2':
-                                   for n in range(len(produtos)):
-                                        print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
-                                   alterar = float(int(input('\nO que deseja mudar? '))) 
+                                   for indice in range(len(produtos)):
+                                        print(f'Código: {indice} | Produto: {produtos[indice][0]} | Valor: {produtos[indice][1]} | Quantidade: {produtos[indice][2]}')
 
-                                   for n in range(len(produtos)):
-                                        if alterar == produtos[n][0]:
-                                             nomep = input('\nDigite o nome do produto: ') 
-                                             produtos[n][0] = nomep 
+                                   indice = int(input('Digite o indice que deseja alterar: '))
+                                   while indice < 0 or indice >= len(produtos):
+                                        print('Inválido')
+                                   indice = int (input('Digite o indice que deseja alterar: '))
 
-                                        if alterar == produtos[n][1]:
-                                             valorp = float(input('Digite o valor do produto: ')) 
-                                             produtos[n][1] = valorp
-
-                                        if alterar == produtos[n][2]:
-                                             quantidadep = int(input('Digite a quantidade do produto: '))
-                                             produtos[n][2] = quantidadep 
+                                   nomep = input("Digite o novo nome: ")
+                                   valorp = input('Digite o novo valor: ')
+                                   quantidadep = input('Digite a nova quantidade: ')
+                                   novaSublista = [nomep, valorp, quantidadep]
+                                   produtos[indice] = novaSublista
                
                                    for n in range(len(produtos)):
                                         print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')                                            
                                    
                               elif opcao2 == '3':
-                                   for n in range(len(produtos)):
-                                        print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
-                                   remover = input('\nDigite qual deseja remover: ')
-                                   produtos.remove(produtos[n])
+                                   for i in range(len(produtos)):
+                                        print(f'Código: {i} | Produto: {produtos[i][0]} | Valor: {produtos[i][1]} | Quantidade: {produtos[i][2]}')
 
-                                   for n in range(len(produtos)):
-                                        print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
-                              
+                                   indice = int(input('\nDigite o indice para remover: '))
+                                   produtos.remove(produtos[indice])
+
+                                   for i in range(len(produtos)):
+                                        print(f'Código: {i} | Produto: {produtos[i][0]} | Valor: {produtos[i][1]} | Quantidade: {produtos[i][2]}') 
+                                   
                               elif opcao2 == '4':
                                    break
 
@@ -165,20 +164,32 @@ while True:
 
                               elif opcao4 == '2':
                                    for s in range(len(servicos)):
-                                        print(f'Serviço: {servicos[s][0]} | Valor: {servicos[s][1]} | Horario: {servicos[s][2]}') 
-                                   alterar = float (input('\nO que deseja mudar? '))
+                                        print(f'Código {s} | Serviço: {servicos[s][0]} | Valor: {servicos[s][1]}')
+                                        for s in servicos[s][2]:
+                                             print(f'| Horário: {s}') 
+                                   
 
-                                   for s in range(len(servicos)):
-                                        if alterar == servicos[s][0]:
-                                             nomeservico = input('\nDigite o novo nome do serviço: ') 
-                                             servicos[s][0] = nomeservico
-                                        if alterar == servicos[s][1]:
-                                             valorservico = float(input('Digite o novo valor do seviço: '))
-                                             servicos[s][1] = valorservico
-                                        if alterar == servicos[s][2]:
-                                             horario = float(input('Digite o novo horario: '))
-                                             servicos[s][2] = horario
-                                             print(f'{servicos}')
+                                   indice = int(input('Digite o indice que deseja alterar: '))
+                                   while indice < 0 or indice >= len(servicos):
+                                        print('Inválido')
+                                        indice = int(input('Digite o indice que deseja alterar: '))
+
+                                   nomeservico = input("Digite o novo nome do serviço: ")
+                                   valorservico = float(input('Digite o novo valor: '))
+                                   horario = int(input('Digite quantos horáios você deseja adicionar: '))
+                                   horario = []
+                                   novaSublista = [nomeservico, valorservico, horario]
+                                   servicos[indice] = novaSublista
+
+                              elif opcao4 == '3':
+                                   for i in range(len(servicos)):
+                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]} | Horário: {servicos[i][2]}')
+
+                                   indices = int(input('\nDigite o indice para remover: '))
+                                   servicos.remove(servicos[indices])
+
+                                   for i in range(len(servicos)):
+                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]} | Horário: {servicos[i][2]}')
                          
                          elif opcao1 == '3':
                               print('\nESTOQUE:')
@@ -219,6 +230,6 @@ while True:
 
 
                     
-               break
-          else:
-               print('\nDados incorretos, refaça o login\n')
+                    break
+               else:
+                   print('\nDados incorretos, refaça o login\n') 
