@@ -72,31 +72,31 @@ while True:
             senha = input('Digite sua senha: ')
             tipo = 'N'
           
-            for a in usuarios:
-                    if a[1] == email and a[2] == senha:
-                         print(f'\nBem vindo(a) {a[0]} perfil adm!\n') 
-                         tipo = a[3]
-                         logando = False
-            if logando == False and tipo == 'A':
-                produtos = [
+          for a in usuarios:
+               if a[1] == email and a[2] == senha:
+                    print(f'\nBem vindo(a) {a[0]}!\n') 
+                    tipo = a[3]
+                    logando = False
+          if logando == False and tipo == 'A':
+               produtos = [
                     ['Ração de 1kg', 16.0, 15],
                     ['Petisco de 300g', 12, 40], 
                     ['Cama', 70.0, 10],
                     ['Shampoo', 30.0, 50] 
                 ]                    
-                serviços = [
+               servicos = [
                     ['Banho', 35.0, [8,10]],
                     ['Banho e tosa', 38.0, [8,10]],
                     ['Tosa higiênica', 42.0, [14,15]],
                     ['Tosa completa', 50.0, [14,15]] 
                 ] 
-                while True:
+               while True:
                     print('\nMENU DO ADMINISTRADOR: ')
                     print('\n1 - Cadastrar produtos')
                     print('2 - Cadastrar serviços')
-                    print('4 - Controle de produtos')
-                    print('5 - Controle de horários') 
-                    print('6 - Voltar ao menu inícial\n')
+                    print('3 - Controle de produtos')
+                    print('4 - Controle de horários') 
+                    print('5 - Voltar ao menu inicial\n')
                     opcao1 = input('Digite a sua opção: ')
 
                     if opcao1 == '1':
@@ -145,34 +145,74 @@ while True:
 
                          elif opcao2 == '4':
                               break
-                         
-                    elif opcao1 == '4':
+
+                    elif opcao1 == '2':
+                         print('\nMENU SERVIÇOS: ')
+                         print('\n1 - Cadastrar')
+                         print('2 - Atualizar')
+                         print('3 - Remover')
+                         print('4 - Voltar para o menu administrador') 
+                         opcao4 = input ('Digite a opção desejada: ')
+
+                         if opcao4 == '4':
+                              break
+
+                         elif opcao4 == '1':
+                              nomeservico = input('\nDigite o nome do serviço: ')
+                              valorservico = input('Digite o valor: ')
+                              horario = input('Digite a hora: ')
+                              servicos.append([nomeservico, valorservico, horario]) 
+
+                         elif opcao4 == '2':
+                              for s in range(len(servicos)):
+                                   print(f'Serviço: {servicos[s][0]} | Valor: {servicos[s][1]} | Horario: {servicos[s][2]}') 
+                              alterar = float (input('\nO que deseja mudar? '))
+
+                              for s in range(len(servicos)):
+                                   if alterar == servicos[s][0]:
+                                        nomeservico = input('\nDigite o novo nome do serviço: ') 
+                                        servicos[s][0] = nomeservico
+                                   if alterar == servicos[s][1]:
+                                        valorservico = float(input('Digite o novo valor do seviço: '))
+                                        servicos[s][1] = valorservico
+                                   if alterar == servicos[s][2]:
+                                        horario = float(input('Digite o novo horario: '))
+                                        servicos[s][2] = horario
+                                        print(f'{servicos}')
+                        
+                    elif opcao1 == '3':
                          print('\nESTOQUE:')
                          for n in range(len(produtos)):
-                              print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
+                              print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
 
-            elif logando == False and tipo == 'C':
-                 print(f'\nBem vindo(a) {a[0]}!\n')
-                 while True:
-                      print('\nMENU SERVIÇOS')
-                      print('1 - Comprar produtos') 
-                      print('2 - Agendar serviços')
-                      print('3 - Avaliação de seviços')
-                      print('4 - Voltar')
-                      opcao3 = input('Digite a sua opção: ')
+                    elif opcao1 == '4':
+                         break
 
-                      if opcao3 == '4':
-                           break
-                    
+                    elif opcao1 == '5':
+                         break
 
+          elif logando == False and tipo == 'C':
+               print(f'\nBem vindo(a) {a[0]}!\n')
+               while True:
+                    print('\nMENU SERVIÇOS:') 
+                    print('\n1 - Comprar produtos') 
+                    print('2 - Agendar serviços')
+                    print('3 - Avaliação de seviços')
+                    print('4 - Voltar para o menu inicial')
+                    opcao3 = input('Digite a sua opção: ')
 
-
-
-
-
-
+                    if opcao3 == '4':
+                         break 
 
                     
-                 break
-            else:
-                         print('\nDados incorretos, refaça o login\n')
+
+
+
+
+
+
+
+                    
+               break
+          else:
+               print('\nDados incorretos, refaça o login\n')
