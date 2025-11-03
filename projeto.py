@@ -79,30 +79,32 @@ while True:
                          logando = False
             if logando == False and tipo == 'A':
                 produtos = [
-                    ['Ração de 1kg', 16, 15],
+                    ['Ração de 1kg', 16.0, 15],
                     ['Petisco de 300g', 12, 40], 
-                    ['Cama', 70, 10],
-                    ['Shampoo', 30, 50] 
+                    ['Cama', 70.0, 10],
+                    ['Shampoo', 30.0, 50] 
                 ]                    
                 serviços = [
-                    ['Banho',35, [8,10]],
-                    ['Banho e tosa',38, [8,10]],
-                    ['Tosa higiênica',42, [14,15]],
-                    ['Tosa completa',50, [14,15]] 
+                    ['Banho', 35.0, [8,10]],
+                    ['Banho e tosa', 38.0, [8,10]],
+                    ['Tosa higiênica', 42.0, [14,15]],
+                    ['Tosa completa', 50.0, [14,15]] 
                 ] 
                 while True:
                     print('\nMENU DO ADMINISTRADOR: ')
                     print('\n1 - Cadastrar produtos')
                     print('2 - Cadastrar serviços')
-                    print('3 - Voltar ao menu inícial\n')
+                    print('4 - Controle de produtos')
+                    print('5 - Controle de horários') 
+                    print('6 - Voltar ao menu inícial\n')
                     opcao1 = input('Digite a sua opção: ')
 
                     if opcao1 == '1':
                          print('\nMENU PRODUTO: ')
                          print('\n1 - Cadastrar')
                          print('2 - Atualizar')
-                         print('3 - Remover')
-                         print('4 - Voltar')
+                         print('3 - Remover') 
+                         print('4 - Voltar para o menu administrador')
                          opcao2 = input('\nDigite sua opção: ') 
 
                          if opcao2 == '1':
@@ -122,7 +124,7 @@ while True:
                                         produtos[n][0] = nomep 
 
                                    if alterar == produtos[n][1]:
-                                        valorp = float(int(input('Digite o valor do produto: ')))
+                                        valorp = float(input('Digite o valor do produto: ')) 
                                         produtos[n][1] = valorp
 
                                    if alterar == produtos[n][2]:
@@ -139,10 +141,15 @@ while True:
                               produtos.remove(produtos[n])
 
                               for n in range(len(produtos)):
-                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')  
+                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
 
                          elif opcao2 == '4':
                               break
+                         
+                    elif opcao1 == '4':
+                         print('\nESTOQUE:')
+                         for n in range(len(produtos)):
+                              print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
 
             elif logando == False and tipo == 'C':
                  print(f'\nBem vindo(a) {a[0]}!\n')
@@ -156,7 +163,7 @@ while True:
 
                       if opcao3 == '4':
                            break
-                    #   if opcao3 == 1:
+                    
 
 
 
