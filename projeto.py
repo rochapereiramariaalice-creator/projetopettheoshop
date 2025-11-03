@@ -164,9 +164,9 @@ while True:
 
                               elif opcao4 == '2':
                                    for s in range(len(servicos)):
-                                        print(f'Código {s} | Serviço: {servicos[s][0]} | Valor: {servicos[s][1]}')
+                                        print(f'Código {s} | Serviço: {servicos[s][0]} | Valor: {servicos[s][1]}')  
                                         for s in servicos[s][2]:
-                                             print(f'| Horário: {s}') 
+                                             print(f'Horário: {s}h') 
                                    
 
                                    indice = int(input('Digite o indice que deseja alterar: '))
@@ -177,8 +177,14 @@ while True:
                                    nomeservico = input("Digite o novo nome do serviço: ")
                                    valorservico = float(input('Digite o novo valor: '))
                                    horario = int(input('Digite quantos horáios você deseja adicionar: '))
-                                   horario = []
-                                   novaSublista = [nomeservico, valorservico, horario]
+                                   horarios = []
+
+                                   for i in range(horario):
+                                        horarios.append(int(input('Qual horário deseja adicionar: ')))
+
+
+                                   
+                                   novaSublista = [nomeservico, valorservico, horarios]
                                    servicos[indice] = novaSublista
 
                               elif opcao4 == '3':
@@ -217,9 +223,10 @@ while True:
 
                          if opcao3 == '1':
                               print('\nProdutos disponíveis: ')
-
                               for n in range(len(produtos)):
                                    print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
+                                   input()
+
 
                     
 
