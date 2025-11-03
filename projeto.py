@@ -79,10 +79,10 @@ while True:
                          logando = False
             if logando == False and tipo == 'A':
                 produtos = [
-                    ['Ração de 1kg', '16', '15'],
-                    ['Petisco de 300g', '12', '40'], 
-                    ['Cama', '70', '10'],
-                    ['Shampoo', '30', '50'] 
+                    ['Ração de 1kg', 16, 15],
+                    ['Petisco de 300g', 12, 40], 
+                    ['Cama', 70, 10],
+                    ['Shampoo', 30, 50] 
                 ]                    
                 serviços = [
                     ['Banho',35, [8,10]],
@@ -114,7 +114,7 @@ while True:
                          elif opcao2 == '2':
                               for n in range(len(produtos)):
                                    print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
-                              alterar = input('\nO que deseja mudar? ')
+                              alterar = float(int(input('\nO que deseja mudar? '))) 
 
                               for n in range(len(produtos)):
                                    if alterar == produtos[n][0]:
