@@ -142,7 +142,7 @@ while True:
 
                                    for n in range(len(produtos)):
                                         print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
-
+                              
                               elif opcao2 == '4':
                                    break
 
@@ -206,6 +206,7 @@ while True:
 
                          if opcao3 == '1':
                               print('\nProdutos disponíveis: ')
+
                               for n in range(len(produtos)):
                                    print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
 
