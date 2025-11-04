@@ -216,36 +216,68 @@ while True:
                          print('4 - Voltar para o menu inicial')
                          opcao3 = input('Digite a sua opção: ')
 
-                         if opcao3 == '4':
+                         if opcao3 == '3':
                               break 
-
                          if opcao3 == '1':
+                              total_compra = 0
+                              total_servico = 0
+                              
                               print('\nProdutos disponíveis: ')
                               for n in range(len(produtos)):
                                    print(f'Código: {n} | Produto: {produtos[n][0]} | Valor: R${produtos[n][1]} | Quantidade: {produtos[n][2]}')
+                                      
+                              opcao5 = int(input('\nDigite o código do produto que deseja comprar (ou -1 para pular): '))
 
-                              opcao5 = int(input('\nDigite o código do produto que deseja comprar: '))
-                              while opcao5 < 0 or opcao5 >= len(produtos):
-                                   print('Código inválido!') 
-                                   opcao5 = int(input('\nDigite o código do produto que deseja comprar: '))
+                              while opcao5 != -1:
+                                   if opcao5 < 0 or opcao5 >= len(produtos):
+                                        print('Código inválido!')
+                                        opcao5 = int(input('\nDigite o código do produto que deseja comprar (ou -1 para pular!): '))
 
-                              quantidade = int(input('Quantas unidades deseja comprar: '))
-
-                              if quantidade > produtos[opcao5][2]:
-                                   print(f'Quantidade iválida! Só temos {produtos[opcao5][2]} unidades disponíveis.')
-                              else:
-                                   total = produtos[opcao5][1] * quantidade
-                                   if total > 50:
-                                        desconto = total * 0.05
-                                        total -= desconto
-                                        produtos[opcao5][2] -= quantidade
-                                        print(f'\nVocê ganhou 5% de desconto ({desconto}), pois comprou mais de 50 reais.')
-                                        print('Compra realizada com sucesso!')
                                    else:
-                                        print(f'\nVocê comprou {quantidade}x {produtos[opcao5][0]} por R${total:.2f} no total')
-                                        print('Compra realizada com sucesso!')
-                                   lista_compras.append([a[0], produtos[opcao5][2], quantidade, total])
+                                        quantidade = int(input('Quantas unidades deseja comprar: '))
 
+                                        if quantidade > produtos[opcao5][2]:
+                                             print(f'Valor inválido, nós so temos {produtos[opcao5][2]} unidades disponíveis.')
+                                        else:
+                                             total_compra = produtos[opcao5][1] * quantidade
+                                             produtos[opcao5][2] -= quantidade 
+                                             print(f'\nCompra de {quantidade}x {produtos[opcao5][0]} adicionada. Total: R${total_compra}')
+
+
+                              print('\nServiços disponíveis: ')
+                              for s in range(len(servicos)):
+                                   print(f'Código: {s} | Serviço: {servicos[s][0]} | Valor: R${servicos[s][1]}') 
+                                   for s in servicos[s][2]:
+                                             print(f'Horários disponíveis: {s}h') 
+
+                              opcao6 = int(input('\nDigite o código do serviço que deseja agendar (ou -1 para pular): '))
+
+                              if opcao6 != -1:
+                                   if opcao6 < 0 or opcao6 >= len(servicos):
+                                        print('Código inválido!')
+                                   else:
+                                        horario = int(input('Digite o horário desejado: '))
+                                        if horario not in servicos[opcao6][2]:
+                                             print('Horário indisponível!')
+                                        else:
+                                             total_servico = servicos[opcao6][1]
+                                             servicos[opcao6][2].remove(horario)  
+                                             print(f'\nServiço {servicos[opcao6][0]} agendado para {horario}h por R${total_servico}')
+
+                              
+                              total_geral = total_compra + total_servico
+
+                              if total_geral > 100:
+                                   desconto = total_geral * 0.05
+                                   total_geral -= desconto
+                                   print(f'\nVocê ganhou 5% de desconto ({desconto}), pois seu valor final foi mais de 100 reais.')
+
+                              if total_compra > 0 or total_servico > 0:
+                                   print(f'\nValor total a pagar: R${total_geral:.2f}')
+                                   lista_compras.append([a[0], total_compra, total_servico, total_geral])
+                                   print('Pagamento recebido no estabelecimento!')
+                              else:
+                                   print('\nNenhuma compra ou agendamento realizado.')
 
 
 
