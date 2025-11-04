@@ -2,7 +2,7 @@
 
 comentarios = []
 usuarios = ['Alice','alice@gmail.com', '12345678', 'A'] 
-lista_compras = [[]]
+lista_compras = []
 produtos = [
      ['Ração de 1kg', 16.0, 15],
      ['Petisco de 300g', 12, 40], 
@@ -241,6 +241,9 @@ while True:
                          if opcao3 == '1':
                               total_compra = 0
                               total_servico = 0
+                              produto_comprado = ''
+                              servico_agendado = ''
+                              horario_escolhido = 0 
                               
                               print('\nProdutos disponíveis: ')
                               for n in range(len(produtos)):
@@ -260,7 +263,9 @@ while True:
                                              print(f'Valor inválido, nós so temos {produtos[opcao5][2]} unidades disponíveis.')
                                         else:
                                              total_compra = produtos[opcao5][1] * quantidade
-                                             produtos[opcao5][2] -= quantidade 
+                                             produtos[opcao5][2] -= quantidade  
+                                             produto_comprado = produtos[opcao5][2] 
+
                                              print(f'\nCompra de {quantidade}x {produtos[opcao5][0]} adicionada. Total: R${total_compra}')
 
                               print('\nServiços disponíveis: ') 
@@ -280,7 +285,10 @@ while True:
                                              print('Horário indisponível!')
                                         else:
                                              total_servico = servicos[opcao6][1] 
+                                             servico_agendado = servicos[opcao6][0] 
+                                             horario_escolhido = horario
                                              servicos[opcao6][2].remove(horario)  
+
                                              print(f'\nServiço {servicos[opcao6][0]} agendado para {horario}h por R${total_servico}') 
                                              
                               total_geral = total_compra + total_servico
@@ -292,8 +300,10 @@ while True:
 
                               if total_compra > 0 or total_servico > 0:
                                    print(f'\nValor total a pagar: R${total_geral:.2f}')
-                                   lista_compras.append([a[0], total_compra, total_servico, total_geral])
                                    print('Pagamento recebido no estabelecimento!')
+
+                                   lista_compras.append([a[0], produto_comprado, servico_agendado, horario_escolhido, total_geral])
+                                   
                               else:
                                    print('\nNenhuma compra ou agendamento realizado.') 
 
