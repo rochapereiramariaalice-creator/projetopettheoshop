@@ -1,6 +1,7 @@
 #THÉOPETSHOP 
 
-usuarios = [['alice','alice@gmail.com', '12345678', 'A']]
+usuarios = [['alice','alice@gmail.com', '12345678', 'C']]
+lista_compras = [[usuarios[0]]] 
 produtos = [
      ['Ração de 1kg', 16.0, 15],
      ['Petisco de 300g', 12, 40], 
@@ -182,8 +183,6 @@ while True:
                                    for i in range(horario):
                                         horarios.append(int(input('Qual horário deseja adicionar: ')))
 
-
-                                   
                                    novaSublista = [nomeservico, valorservico, horarios]
                                    servicos[indice] = novaSublista
 
@@ -214,7 +213,7 @@ while True:
                          print('\nMENU SERVIÇOS:') 
                          print('\n1 - Comprar produtos') 
                          print('2 - Agendar serviços')
-                         print('3 - Avaliação de seviços')
+                         print('3 - Avaliação de seviços') 
                          print('4 - Voltar para o menu inicial')
                          opcao3 = input('Digite a sua opção: ')
 
@@ -224,8 +223,27 @@ while True:
                          if opcao3 == '1':
                               print('\nProdutos disponíveis: ')
                               for n in range(len(produtos)):
-                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')
-                                   input()
+                                   print(f'Código: {n} | Produto: {produtos[n][0]} | Valor: R${produtos[n][1]} | Quantidade: {produtos[n][2]}')
+
+                              opcao5 = int(input('\nDigite o código do produto que deseja comprar: '))
+                              while opcao5 < 0 or opcao5 >= len(produtos):
+                                   print('Código inválido!')
+                                   opcao5 = int(input('\nDigite o código do produto que deseja comprar: '))
+
+                              quantidade = int(input('Quantas unidades deseja comprar: '))
+
+                              if quantidade > produtos[opcao5][2]:
+                                   print(f'Quantidade iválida! Só temos {produtos[opcao5][2]} unidades disponíveis.')
+                              else:
+                                   total = produtos[opcao5][1] * quantidade
+                                   produtos[opcao5][2] -= quantidade
+                                   print(f'\nVocê comprou {quantidade}x {produtos[opcao5][0]} por R${total:.2f} no total.')
+                                   print('Compra realizada com sucesso!')
+                                   lista_compras.append([a[0], produtos[opcao5][0], quantidade, total])
+                    
+                              
+
+
 
 
                     
