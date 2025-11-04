@@ -1,7 +1,7 @@
 #THÉOPETSHOP 
 
 comentarios = []
-usuarios = ['Alice','alice@gmail.com', '12345678', 'A'] 
+usuarios = [['Alice','alice@gmail.com', '12345678', 'A']]
 lista_compras = []
 produtos = [
      ['Ração de 1kg', 16.0, 15],
@@ -215,8 +215,10 @@ while True:
 
                          elif opcao1 == '4':
                               print('LISTA DE HORÁRIOS:')
-                              for i in servicos[i][2]:
-                                   print(f'Horário: {i}h') 
+                              for i in range(len(servicos)):
+                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]}')
+                                        for i in servicos[i][2]:
+                                             print(f'Horário: {i}h') 
 
                          elif opcao1 == '5':
                               break
@@ -303,7 +305,7 @@ while True:
                                    print('Pagamento recebido no estabelecimento!')
 
                                    lista_compras.append([a[0], produto_comprado, servico_agendado, horario_escolhido, total_geral])
-                                   
+
                               else:
                                    print('\nNenhuma compra ou agendamento realizado.') 
 
