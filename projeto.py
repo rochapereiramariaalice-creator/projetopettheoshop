@@ -244,18 +244,7 @@ while True:
                                    else:
                                         print(f'\nVocê comprou {quantidade}x {produtos[opcao5][0]} por R${total:.2f} no total')
                                         print('Compra realizada com sucesso!')
-                                   lista_compras.append([a[0], produtos[opcao5][0], quantidade, total]) 
-
-
-                    
-                              
-
-
-
-
-                    
-
-
+                                   lista_compras.append([a[0], produtos[opcao5][2], quantidade, total])
 
 
 
