@@ -1,7 +1,7 @@
 #THÉOPETSHOP 
 
 comentarios = []
-usuarios = [['Alice','alice@gmail.com', '12345678', 'A']]
+usuarios = ['Alice','alice@gmail.com', '12345678', 'A'] 
 lista_compras = [[]]
 produtos = [
      ['Ração de 1kg', 16.0, 15],
@@ -102,7 +102,7 @@ while True:
                          tipo = a[3]
                          logando = False
                if logando == False and tipo == 'A':
-                    print(f'\nBem vindo(a) {a[0]}!\n')
+                    print(f'\nBem vindo(a) {a[1]}!\n')
                    
                     while True:
                          print('\nMENU DO ADMINISTRADOR: ')
@@ -214,7 +214,9 @@ while True:
                                    print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
 
                          elif opcao1 == '4':
-                              break
+                              print('LISTA DE HORÁRIOS:')
+                              for i in servicos[i][2]:
+                                   print(f'Horário: {i}h') 
 
                          elif opcao1 == '5':
                               break
@@ -223,17 +225,16 @@ while True:
                     print(f'\nBem vindo(a) {a[0]}!\n')
                     while True:
                          print('\nMENU SERVIÇOS:') 
-                         print('\n1 - Agendadmento e compra')
+                         print('\n1 - Agendamento e compra')
                          print('2 - Avaliar PETSHOP')
                          print('3 - Voltar para o menu inicial')
-                         opcao3 = input('Digite a sua opção: ')
+                         opcao3 = input('\nDigite a sua opção: ')
 
                          if opcao3 == '2':
-                                   print('Deixe seu comentario para o THÉOPETSHOP abaixo')
+                                   print('Deixe seu comentario para o THÉOPETSHOP abaixo:\n')
                                    comentario = input('Deixe sua avaliação: ')
                                    comentarios.append([a[0], comentario]) 
                                    print('\nObrigado(a) pela avaliação!\n')
-
 
                          if opcao3 == '3':
                               break 
@@ -264,7 +265,7 @@ while True:
 
                               print('\nServiços disponíveis: ') 
                               for s in range(len(servicos)):
-                                   print(f'Código: {s} | Serviço: {servicos[s][0]} | Valor: R${servicos[s][1]} | Horários disponíveis: {servicos[s][2]}')
+                                   print(f'Código: {s} | Serviço: {servicos[s][0]} | Valor: R${servicos[s][1]}')
                                    for s in servicos[s][2]:
                                              print(f'Horários disponíveis: {s}h') 
 
@@ -278,11 +279,10 @@ while True:
                                         if horario not in servicos[opcao6][2]:
                                              print('Horário indisponível!')
                                         else:
-                                             total_servico = servicos[opcao6][1]
+                                             total_servico = servicos[opcao6][1] 
                                              servicos[opcao6][2].remove(horario)  
-                                             print(f'\nServiço {servicos[opcao6][0]} agendado para {horario}h por R${total_servico}')
-
-                              
+                                             print(f'\nServiço {servicos[opcao6][0]} agendado para {horario}h por R${total_servico}') 
+                                             
                               total_geral = total_compra + total_servico
 
                               if total_geral > 100:
@@ -295,7 +295,7 @@ while True:
                                    lista_compras.append([a[0], total_compra, total_servico, total_geral])
                                    print('Pagamento recebido no estabelecimento!')
                               else:
-                                   print('\nNenhuma compra ou agendamento realizado.')
+                                   print('\nNenhuma compra ou agendamento realizado.') 
 
 
 
