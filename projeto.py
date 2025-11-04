@@ -266,7 +266,7 @@ while True:
                               for s in range(len(servicos)):
                                    print(f'Código: {s} | Serviço: {servicos[s][0]} | Valor: R${servicos[s][1]} | Horários disponíveis: {servicos[s][2]}')
                                    for s in servicos[s][2]:
-                                             print(f'Horários disponíveis: {s}') 
+                                             print(f'Horários disponíveis: {s}h') 
 
                               opcao6 = int(input('\nDigite o código do serviço que deseja agendar (ou -1 para pular): '))
 
