@@ -5,7 +5,7 @@ usuarios = [['Alice','alice@gmail.com', '12345678', 'A']]
 lista_compras = []
 produtos = [
      ['Ração de 1kg', 16.0, 15],
-     ['Petisco de 300g', 12, 40], 
+     ['Petisco de 300g', 12.0, 40], 
      ['Cama', 70.0, 10],
      ['Shampoo', 30.0, 50] 
 ]                    
@@ -22,7 +22,7 @@ while True:
      print('1 - Cadastro')
      print('2 - Login') 
      print('3 - Sair')
-     print('4 - Avaliaçoes do PETSHOP\n')
+     print('4 - Avaliações do PETSHOP\n')
      opcao = input('Digite a sua opção: ') 
      
      if(opcao == '3'):
@@ -102,7 +102,7 @@ while True:
                          tipo = a[3]
                          logando = False
                if logando == False and tipo == 'A':
-                    print(f'\nBem vindo(a) {a[1]}!\n')
+                    print(f'\nBem vindo(a) {a[0]}!\n') 
                    
                     while True:
                          print('\nMENU DO ADMINISTRADOR: ')
@@ -123,8 +123,8 @@ while True:
 
                               if opcao2 == '1':
                                    nomep = input('\nDigite o nome do produto: ')
-                                   quantidadep = input('Digite quantas unidades: ')
-                                   valorp = int(input('Digite o valor do produto: '))
+                                   quantidadep = int(input('Digite quantas unidades: '))
+                                   valorp = float(input('Digite o valor do produto: '))
                                    produtos.append([nomep, valorp, quantidadep]) 
                                         
                               elif opcao2 == '2':
@@ -134,11 +134,11 @@ while True:
                                    indice = int(input('Digite o indice que deseja alterar: '))
                                    while indice < 0 or indice >= len(produtos):
                                         print('Inválido')
-                                   indice = int (input('Digite o indice que deseja alterar: '))
+                                   indice = int(input('Digite o indice que deseja alterar: ')) 
 
                                    nomep = input("Digite o novo nome: ")
-                                   valorp = input('Digite o novo valor: ')
-                                   quantidadep = input('Digite a nova quantidade: ')
+                                   valorp = float(input('Digite o novo valor: '))
+                                   quantidadep = int(input('Digite a nova quantidade: '))
                                    novaSublista = [nomep, valorp, quantidadep]
                                    produtos[indice] = novaSublista
                
@@ -171,10 +171,15 @@ while True:
 
                               elif opcao4 == '1':
                                    nomeservico = input('\nDigite o nome do serviço: ')
-                                   valorservico = input('Digite o valor: ')
-                                   horario = input('Digite a hora: ')
-                                   servicos.append([nomeservico, valorservico, horario]) 
+                                   valorservico = float(input('Digite o valor: '))
+                                   horario = int(input('Digite quantos horários você deseja cadastrar: '))
+                                   horarios = []
 
+                                   for i in range(horario):
+                                        horarios.append(int(input('Qual horário deseja adicionar: ')))
+                                   novaSublista = [nomeservico, valorservico, horarios]
+                                   servicos.append([nomeservico, valorservico, horarios])
+                                    
                               elif opcao4 == '2':
                                    for s in range(len(servicos)):
                                         print(f'Código {s} | Serviço: {servicos[s][0]} | Valor: {servicos[s][1]}')  
@@ -188,7 +193,7 @@ while True:
 
                                    nomeservico = input("Digite o novo nome do serviço: ")
                                    valorservico = float(input('Digite o novo valor: '))
-                                   horario = int(input('Digite quantos horáios você deseja adicionar: '))
+                                   horario = int(input('Digite quantos horários você deseja adicionar: '))
                                    horarios = []
 
                                    for i in range(horario):
