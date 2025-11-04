@@ -4,8 +4,8 @@ usuarios = [['alice','alice@gmail.com', '12345678', 'C']]
 lista_compras = [[usuarios[0]]] 
 produtos = [
      ['Ração de 1kg', 16.0, 15],
-     ['Petisco de 300g', 12, 40], 
-     ['Cama', 70.0, 10],
+     ['Petisco de 300g', 12.0, 40], 
+     ['Cama', 70.0, 10], 
      ['Shampoo', 30.0, 50] 
 ]                    
 servicos = [
@@ -117,7 +117,7 @@ while True:
                                         
                               elif opcao2 == '2':
                                    for indice in range(len(produtos)):
-                                        print(f'Código: {indice} | Produto: {produtos[indice][0]} | Valor: {produtos[indice][1]} | Quantidade: {produtos[indice][2]}')
+                                        print(f'Código: {indice} | Produto: {produtos[indice][0]} | Valor: R${produtos[indice][1]} | Quantidade: {produtos[indice][2]}')
 
                                    indice = int(input('Digite o indice que deseja alterar: '))
                                    while indice < 0 or indice >= len(produtos):
@@ -131,17 +131,17 @@ while True:
                                    produtos[indice] = novaSublista
                
                                    for n in range(len(produtos)):
-                                        print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}')                                            
+                                        print(f'Produto: {produtos[n][0]} | Valor: R${produtos[n][1]} | Quantidade: {produtos[n][2]}')                                            
                                    
                               elif opcao2 == '3':
                                    for i in range(len(produtos)):
-                                        print(f'Código: {i} | Produto: {produtos[i][0]} | Valor: {produtos[i][1]} | Quantidade: {produtos[i][2]}')
+                                        print(f'Código: {i} | Produto: {produtos[i][0]} | Valor: R${produtos[i][1]} | Quantidade: {produtos[i][2]}')
 
                                    indice = int(input('\nDigite o indice para remover: '))
                                    produtos.remove(produtos[indice])
 
                                    for i in range(len(produtos)):
-                                        print(f'Código: {i} | Produto: {produtos[i][0]} | Valor: {produtos[i][1]} | Quantidade: {produtos[i][2]}') 
+                                        print(f'Código: {i} | Produto: {produtos[i][0]} | Valor: R${produtos[i][1]} | Quantidade: {produtos[i][2]}') 
                                    
                               elif opcao2 == '4':
                                    break
@@ -165,10 +165,9 @@ while True:
 
                               elif opcao4 == '2':
                                    for s in range(len(servicos)):
-                                        print(f'Código {s} | Serviço: {servicos[s][0]} | Valor: {servicos[s][1]}')  
+                                        print(f'Código {s} | Serviço: {servicos[s][0]} | Valor: R${servicos[s][1]}')  
                                         for s in servicos[s][2]:
                                              print(f'Horário: {s}h') 
-                                   
 
                                    indice = int(input('Digite o indice que deseja alterar: '))
                                    while indice < 0 or indice >= len(servicos):
@@ -188,18 +187,18 @@ while True:
 
                               elif opcao4 == '3':
                                    for i in range(len(servicos)):
-                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]} | Horário: {servicos[i][2]}')
+                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: R${servicos[i][1]} | Horário: {servicos[i][2]}')
 
                                    indices = int(input('\nDigite o indice para remover: '))
                                    servicos.remove(servicos[indices])
 
                                    for i in range(len(servicos)):
-                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]} | Horário: {servicos[i][2]}')
+                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: R${servicos[i][1]} | Horário: {servicos[i][2]}')
                          
                          elif opcao1 == '3':
                               print('\nESTOQUE:')
                               for n in range(len(produtos)):
-                                   print(f'Produto: {produtos[n][0]} | Valor: {produtos[n][1]} | Quantidade: {produtos[n][2]}') 
+                                   print(f'Produto: {produtos[n][0]} | Valor: R${produtos[n][1]} | Quantidade: {produtos[n][2]}') 
 
                          elif opcao1 == '4':
                               break
@@ -227,7 +226,7 @@ while True:
 
                               opcao5 = int(input('\nDigite o código do produto que deseja comprar: '))
                               while opcao5 < 0 or opcao5 >= len(produtos):
-                                   print('Código inválido!')
+                                   print('Código inválido!') 
                                    opcao5 = int(input('\nDigite o código do produto que deseja comprar: '))
 
                               quantidade = int(input('Quantas unidades deseja comprar: '))
@@ -236,10 +235,18 @@ while True:
                                    print(f'Quantidade iválida! Só temos {produtos[opcao5][2]} unidades disponíveis.')
                               else:
                                    total = produtos[opcao5][1] * quantidade
-                                   produtos[opcao5][2] -= quantidade
-                                   print(f'\nVocê comprou {quantidade}x {produtos[opcao5][0]} por R${total:.2f} no total.')
-                                   print('Compra realizada com sucesso!')
-                                   lista_compras.append([a[0], produtos[opcao5][0], quantidade, total])
+                                   if total > 50:
+                                        desconto = total * 0.05
+                                        total -= desconto
+                                        produtos[opcao5][2] -= quantidade
+                                        print(f'\nVocê ganhou 5% de desconto ({desconto}), pois comprou mais de 50 reais.')
+                                        print('Compra realizada com sucesso!')
+                                   else:
+                                        print(f'\nVocê comprou {quantidade}x {produtos[opcao5][0]} por R${total:.2f} no total')
+                                        print('Compra realizada com sucesso!')
+                                   lista_compras.append([a[0], produtos[opcao5][0], quantidade, total]) 
+
+
                     
                               
 
