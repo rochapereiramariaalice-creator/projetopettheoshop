@@ -308,26 +308,7 @@ while True:
 
                               else:
                                    print('\nNenhuma compra ou agendamento realizado.') 
-
-
-
-     
-
-
-
-
-                              
-
-
-                    
-
-
-
-
-
-
-
-                    
+                                                     
                     break
                else:
                    print('\nDados incorretos, refaça o login\n')
