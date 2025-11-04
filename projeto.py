@@ -1,7 +1,7 @@
 #THÉOPETSHOP 
 
 comentarios = []
-usuarios = [['Alice','alice@gmail.com', '12345678', 'C']]
+usuarios = [['Alice','alice@gmail.com', '12345678', 'A']]
 lista_compras = [[]]
 produtos = [
      ['Ração de 1kg', 16.0, 15],
@@ -17,25 +17,26 @@ servicos = [
 ] 
 
 while True:
-    print('\nBem vindo ao Théopetshop\n')
-    print('INÍCIO:\n') 
-    print('1 - Cadastro')
-    print('2 - Login') 
-    print('3 - Sair')
-    print('4 - Avaliaçoes do PETSHOP')
-    opcao = input('Digite a sua opção: ') 
-
-    if opcao == '4':
+     print('\nBem vindo ao Théopetshop\n')
+     print('INÍCIO:\n') 
+     print('1 - Cadastro')
+     print('2 - Login') 
+     print('3 - Sair')
+     print('4 - Avaliaçoes do PETSHOP\n')
+     opcao = input('Digite a sua opção: ') 
+     
+     if(opcao == '3'):
+        break
+    
+     if opcao == '4':
           if len(comentarios) == 0:
-               print('\nNenhuma avaliação no PETSHOP.\n')
+               print('\nNenhuma avaliação no PETSHOP.\n') 
           else:
                print('\nAvaliações do PETSHOP:\n')
-          for c in comentarios:
-               print(f'Nome: {c[0]} | Comentário: {c[1]}')
+               for c in comentarios:
+                    print(f'Nome: {c[0]} | Comentário: {c[1]}') 
 
-    if(opcao == '3'):
-        break
-    elif(opcao == '1'):
+     elif(opcao == '1'):
           print('\nCADASTRAMENTO:\n') 
           tipo = input('Digite A para administrador ou C para cliente: ')
           while tipo not in ['A', 'C']:
@@ -88,7 +89,7 @@ while True:
                print('\nCadastrado como cliente!\n')
                print('Agora faça seu login abaixo\n') 
                                 
-    elif (opcao == '2'):
+     elif (opcao == '2'):
           print('\nLOGIN:')
           logando = True
           while logando:
@@ -180,7 +181,6 @@ while True:
                                         for s in servicos[s][2]:
                                              print(f'Horário: {s}h') 
                                    
-
                                    indice = int(input('Digite o indice que deseja alterar: '))
                                    while indice < 0 or indice >= len(servicos):
                                         print('Inválido')
@@ -198,7 +198,9 @@ while True:
 
                               elif opcao4 == '3':
                                    for i in range(len(servicos)):
-                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]} | Horário: {servicos[i][2]}')
+                                        print(f'Código: {i} | Serviço: {servicos[i][0]} | Valor: {servicos[i][1]}')
+                                        for i in servicos[i][2]:
+                                             print(f'Horário: {i}h') 
 
                                    indices = int(input('\nDigite o indice para remover: '))
                                    servicos.remove(servicos[indices])
@@ -229,7 +231,7 @@ while True:
                          if opcao3 == '2':
                                    print('Deixe seu comentario para o THÉOPETSHOP abaixo')
                                    comentario = input('Deixe sua avaliação: ')
-                                   comentarios.append([a[0], comentario])
+                                   comentarios.append([a[0], comentario]) 
                                    print('\nObrigado(a) pela avaliação!\n')
 
 
@@ -260,10 +262,11 @@ while True:
                                              produtos[opcao5][2] -= quantidade 
                                              print(f'\nCompra de {quantidade}x {produtos[opcao5][0]} adicionada. Total: R${total_compra}')
 
-
-                              print('\nServiços disponíveis: ')
+                              print('\nServiços disponíveis: ') 
                               for s in range(len(servicos)):
                                    print(f'Código: {s} | Serviço: {servicos[s][0]} | Valor: R${servicos[s][1]} | Horários disponíveis: {servicos[s][2]}')
+                                   for s in servicos[s][2]:
+                                             print(f'Horários disponíveis: {s}') 
 
                               opcao6 = int(input('\nDigite o código do serviço que deseja agendar (ou -1 para pular): '))
 
