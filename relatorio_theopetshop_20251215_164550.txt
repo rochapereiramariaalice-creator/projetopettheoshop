@@ -1,0 +1,26 @@
+RELATÓRIO DE BACKUP - THÉOPETSHOP
+Data de Geração: 20251215_164550
+
+
+LISTA DE USUÁRIOS
+Nome: Alice | Email: alice@gmail.com | Tipo: Administrador
+
+
+ESTOQUE DE PRODUTOS
+Produto: Ração de 1kg | Valor: R$16.00 | Estoque: 15
+Produto: Petisco de 300g | Valor: R$12.00 | Estoque: 40
+Produto: Cama | Valor: R$70.00 | Estoque: 10
+Produto: Shampoo | Valor: R$30.00 | Estoque: 50
+Produto: Bolinha | Valor: R$10.00 | Estoque: 40
+
+
+SERVIÇOS DISPONÍVEIS
+Serviço: Banho | Valor: R$35.00 | Horários: [8h, 10h]
+Serviço: Banho e tosa | Valor: R$38.00 | Horários: [8h, 10h]
+Serviço: Tosa higiênica | Valor: R$42.00 | Horários: [14h, 15h]
+Serviço: Tosa completa | Valor: R$50.00 | Horários: [14h, 15h]
+Serviço: Banho completo | Valor: R$70.00 | Horários: [16h, 20h]
+
+
+HISTORICO DE COMPRAS E AGENDAMENTOS
+Nenhuma compra ou agendamento registrado.

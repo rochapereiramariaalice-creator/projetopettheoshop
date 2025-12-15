@@ -63,7 +63,7 @@ def gerar_relatorio_txt():
     try:
         with open(nome_arquivo, 'w') as f:
             f.write("="*50 + "\n")
-            f.write("       RELATÓRIO DE BACKUP - THÉOPETSHOP\n")
+            f.write("RELATÓRIO DE BACKUP DO THÉOPETSHOP\n")
             f.write(f"Data de Geração: {timestamp}\n")
             f.write("="*50 + "\n\n")
 
@@ -75,7 +75,7 @@ def gerar_relatorio_txt():
                 f.write("Nenhum usuário cadastrado.\n")
             f.write("-" * 40 + "\n\n")
 
-            f.write("ESTOQUE DE PRODUTOS\n")
+            f.write("LISTA DE PRODUTOS\n")
             if produtos:
                 for p in produtos:
                     f.write(f"Produto: {p['nome']} | Valor: R${p['valor']:.2f} | Estoque: {p['quantidade']}\n")
