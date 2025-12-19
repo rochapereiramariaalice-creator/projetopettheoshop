@@ -189,10 +189,13 @@ while True:
                             salvar_dados_json('usuarios.json', usuarios)
                             salvar_dados_json('produtos.json', produtos)
                             salvar_dados_json('servicos.json', servicos)
+
                         elif opcao_backup == '2':
                             gerar_relatorio_txt()
+
                         elif opcao_backup == '3':
                             continue
+
                         else:
                             print("Opção inválida.")
                              
