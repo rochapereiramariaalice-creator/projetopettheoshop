@@ -324,6 +324,7 @@ while True:
 
             elif usuario_logado and usuario_logado['tipo'] == 'C':
                 print(f'\nBem vindo(a) {usuario_logado["nome"]}! (CLIENTE)\n')
+
                 while True:
                     print('\nMENU CLIENTE:') 
                     print('\n1 - Agendamento e compra')
@@ -354,23 +355,28 @@ while True:
                         opcao5 = input('\nDigite o código do produto que deseja comprar (ou -1 para pular): ')
                         if opcao5.isdigit() or opcao5 == '-1':
                             opcao5 = int(opcao5)
+
                             if opcao5 != -1:
                                 if 0 <= opcao5 < len(produtos):
                                     p_selecionado = produtos[opcao5]
                                     try:
                                         quantidade = int(input('Quantas unidades deseja comprar: '))
+
                                         if quantidade > p_selecionado['quantidade']:
                                             print(f'Valor inválido, nós so temos {p_selecionado["quantidade"]} unidades disponíveis.')
+
                                         elif quantidade > 0:
                                             total_compra = p_selecionado['valor'] * quantidade
                                             p_selecionado['quantidade'] -= quantidade 
                                             produto_comprado = p_selecionado['nome'] 
                                             salvar_dados_json('produtos.json', produtos)
                                             print(f'\nCompra de {quantidade}x {p_selecionado["nome"]} adicionada. Total: R${total_compra:.2f}')
+
                                         else:
                                             print("Quantidade deve ser maior que zero.")
                                     except ValueError:
                                         print("Quantidade inválida.")
+
                                 else:
                                     print('Código de produto inválido!')
                         else:
@@ -384,6 +390,7 @@ while True:
                         opcao6 = input('\nDigite o código do serviço que deseja agendar (ou -1 para pular): ')
                         if opcao6.isdigit() or opcao6 == '-1':
                             opcao6 = int(opcao6)
+
                             if opcao6 != -1:
                                 if 0 <= opcao6 < len(servicos):
                                     s_selecionado = servicos[opcao6]
@@ -391,6 +398,7 @@ while True:
                                         horario = int(input('Digite o horário desejado: '))
                                         if horario not in s_selecionado['horarios']:
                                             print('Horário indisponível!')
+
                                         else:
                                             total_servico = s_selecionado['valor'] 
                                             servico_agendado = s_selecionado['nome'] 
@@ -402,6 +410,7 @@ while True:
                                         print("Horário inválido.")
                                 else:
                                     print('Código de serviço inválido!')
+
                         else:
                             print("Opção inválida para serviço.")
                             
@@ -415,6 +424,7 @@ while True:
                         if total_compra > 0 or total_servico > 0:
                             print(f'\nValor total a pagar: R${total_geral:.2f}')
                             lista_compras.append([usuario_logado['nome'], produto_comprado, servico_agendado, horario_escolhido, total_geral])
+
                         else:
                             print('\nNenhuma compra ou agendamento realizado.') 
                                                                 
